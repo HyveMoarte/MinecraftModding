@@ -1,0 +1,6 @@
+{
+    "parent": "block/button",
+    "textures": {
+        "texture": "tm:blocks/tutorial_block"
+    }
+}
