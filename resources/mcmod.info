@@ -1,0 +1,16 @@
+[
+{
+  "modid": "tm",
+  "name": "Tutorial Mod",
+  "description": "Mod created in my Minecraft Modding Tutorials",
+  "version": "1.0",
+  "mcversion": "1.12",
+  "url": "https://www.youtube.com/channel/UCUAawSqNFBEj-bxguJyJL9g",
+  "updateUrl": "",
+  "authorList": ["Harry"],
+  "credits": "Watchers of Harrys Tech Reviews",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
