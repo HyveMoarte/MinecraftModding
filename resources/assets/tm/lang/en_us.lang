@@ -1,0 +1,43 @@
+item.tutorial_ingot.name=Tutorial Ingot
+
+tile.tutorial_ore.name=Tutorial Ore
+tile.tutorial_ore_nether.name=Tutorial Nether Ore
+tile.tutorial_ore_end.name=Tutorial End Ore
+
+tile.tutorial_stairs.name=Tutorial Stairs
+tile.tutorial_slab_half.name=Tutorial Slab
+tile.tutorial_slab_double.name=Tutorial Double Slab
+tile.tutorial_fence.name=Tutorial Fence
+tile.tutorial_fence_gate.name=Tutorial Fence Gate
+tile.tutorial_pressure_plate.name=Tutorial Pressure Plate
+tile.tutorial_button.name=Tutorial Button
+
+tile.tutorial_block.name=Tutorial Block
+
+itemGroup.tutorialtab=Tutorial Mod
+container.microwave=Microwave
+
+item.tutorial_helmet.name=Tutorial Helmet
+item.tutorial_chestplate.name=Tutorial Chestplate
+item.tutorial_leggings.name=Tutorial Leggings
+item.tutorial_boots.name=Tutorial Boots
+
+item.tutorial_axe.name=Tutorial Axe
+item.tutorial_hoe.name=Tutorial Hoe
+item.tutorial_pickaxe.name=Tutorial Pickaxe
+item.tutorial_sword.name=Tutorial Sword
+item.tutorial_shovel.name=Tutorial Shovel
+item.tutorial_multitool.name=Tutorial Multitool
+
+tile.microwave_active.name=Working Microwave
+tile.microwave_idle.name=Microwave
+
+tile.planks_tutorial.name=Tutorial Planks
+tile.planks_aluminium.name=Aluminium Planks
+tile.log_tutorial.name=Tutorial Log
+tile.log_aluminium.name=Aluminium Log
+tile.leaves_tutorial.name=Tutorial Leaves
+tile.leaves_aluminium.name=Aluminium Leaves
+tile.sapling_tutorial.name=Tutorial Sapling
+tile.sapling_aluminium.name=Aluminium Sapling
+
