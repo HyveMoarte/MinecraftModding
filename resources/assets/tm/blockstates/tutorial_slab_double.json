@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=top": { "model": "tm:tutorial_block" },
+        "half=bottom": { "model": "tm:tutorial_block" }
+    }
+}

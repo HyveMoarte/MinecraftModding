@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "axis=x,variant=tutorial": { "model": "tm:log_tutorial" },
+        "axis=x,variant=aluminium": { "model": "tm:log_aluminium"},
+        "axis=y,variant=tutorial": { "model": "tm:log_tutorial" },
+        "axis=y,variant=aluminium": { "model": "tm:log_aluminium"},
+        "axis=z,variant=tutorial": { "model": "tm:log_tutorial" },
+        "axis=z,variant=aluminium": { "model": "tm:log_aluminium"},
+        "axis=none,variant=tutorial": { "model": "tm:log_tutorial" },
+        "axis=none,variant=aluminium": { "model": "tm:log_aluminium"}
+    }
+}

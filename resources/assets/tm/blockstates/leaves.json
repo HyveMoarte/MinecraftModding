@@ -1,0 +1,14 @@
+{
+    "variants": 
+    {
+        "check_decay=true,decayable=true,variant=tutorial": { "model": "tm:leaves_tutorial" },
+        "check_decay=true,decayable=false,variant=tutorial": { "model": "tm:leaves_tutorial" },
+        "check_decay=false,decayable=true,variant=tutorial": { "model": "tm:leaves_tutorial" },
+        "check_decay=false,decayable=false,variant=tutorial": { "model": "tm:leaves_tutorial" },
+        
+        "check_decay=true,decayable=true,variant=aluminium": { "model": "tm:leaves_aluminium" },
+        "check_decay=true,decayable=false,variant=aluminium": { "model": "tm:leaves_aluminium" },
+        "check_decay=false,decayable=true,variant=aluminium": { "model": "tm:leaves_aluminium" },
+        "check_decay=false,decayable=false,variant=aluminium": { "model": "tm:leaves_aluminium" }
+    }
+}

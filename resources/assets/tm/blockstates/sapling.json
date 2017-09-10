@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "stage=0,variant=tutorial": { "model": "tm:sapling_tutorial" },
+        "stage=0,variant=aluminium": { "model": "tm:sapling_aluminium"},
+        
+        "stage=1,variant=tutorial": { "model": "tm:sapling_tutorial" },
+        "stage=1,variant=aluminium": { "model": "tm:sapling_aluminium" }
+    }
+}

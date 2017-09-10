@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=tutorial": { "model": "tm:planks_tutorial" },
+        "variant=aluminium": { "model": "tm:planks_aluminium"}
+    }
+}
