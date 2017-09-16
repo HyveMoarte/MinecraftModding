@@ -1,0 +1,10 @@
+{
+    "parent": "block/grass",
+    "textures": {
+        "particle": "blocks/dirt",
+        "bottom": "blocks/dirt",
+        "top": "hm:blocks/copper_grass_top",
+        "side": "hm:blocks/copper_grass_side",
+        "overlay": "hm:blocks/copper_grass_side_overlay"
+    }
+}

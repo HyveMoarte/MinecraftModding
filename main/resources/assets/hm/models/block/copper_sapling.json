@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "hm:blocks/copper_sapling"
+    }
+}

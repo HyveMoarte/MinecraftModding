@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "hm:blocks/copper_log_top",
+        "side": "hm:blocks/copper_log"
+    }
+}

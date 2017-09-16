@@ -1,0 +1,43 @@
+itemGroup.harry_tab=Harry Mod
+container.copper_furnace=Copper Furnace
+
+item.copper_ingot.name=Copper Ingot
+item.copper_nugget.name=Copper Nugget
+
+item.structure_house.name=Spawn House
+item.staff_flame.name=Flame Staff
+
+item.copper_axe.name=Copper Axe
+item.copper_hoe.name=Copper Hoe
+item.copper_pickaxe.name=Copper Pickaxe
+item.copper_shovel.name=Copper Shovel
+item.copper_sword.name=Copper Sword
+item.copper_multitool.name=Copper Multitool
+
+item.copper_helmet.name=Copper Helmet
+item.copper_chestplate.name=Copper Chestplate
+item.copper_leggings.name=Copper Leggings
+item.copper_boots.name=Copper Boots
+
+tile.copper_block.name=Copper Block
+tile.copper_ore.name=Copper Ore
+tile.copper_ore_nether.name=Nether Copper Ore
+tile.copper_ore_end.name=End Copper Ore
+
+tile.copper_slab_half.name=Copper Slab
+tile.copper_slab_double.name=Double Copper Slab
+tile.copper_stairs.name=Copper Stairs
+tile.copper_fence.name=Copper Fence
+tile.copper_fence_gate.name=Copper Fence Gate
+tile.copper_button.name=Copper Button
+tile.copper_pressure_plate.name=Copper Pressure Plate
+tile.copper_door.name=Copper Door
+tile.copper_furnace_idle.name=Copper Furnace
+tile.copper_furnace_active.name=Copper Furnace
+
+tile.copper_planks.name=Copper Infused Planks
+tile.copper_log.name=Copper Infused Log
+tile.copper_leaves.name=Copper Infused Leaves
+tile.copper_sapling.name=Copper Infused Sapling
+tile.copper_grass.name=Copper Infused Grass
+tile.copper_dirt.name=Copper Infused Dirt

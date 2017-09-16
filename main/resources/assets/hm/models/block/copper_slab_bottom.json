@@ -1,0 +1,8 @@
+{
+    "parent": "block/half_slab",
+    "textures": {
+        "bottom": "hm:blocks/copper_block",
+        "top": "hm:blocks/copper_block",
+        "side": "hm:blocks/copper_block"
+    }
+}
