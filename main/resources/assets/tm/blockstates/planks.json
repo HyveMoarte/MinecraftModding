@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=copper": { "model": "tm:planks_copper" },
+        "variant=aluminium": { "model": "tm:planks_aluminium" }
+    }
+}
