@@ -9,9 +9,12 @@ import com.google.common.base.Predicate;
 import harry.mod.Main;
 import harry.mod.init.BlockInit;
 import harry.mod.init.ItemInit;
-import harry.mod.util.ItemBlockVariants;
+import harry.mod.objects.blocks.item.ItemBlockVariants;
+import harry.mod.util.handlers.EnumHandler;
 import harry.mod.util.interfaces.IHasModel;
 import harry.mod.util.interfaces.IMetaName;
+import harry.mod.world.gen.generators.WorldGenAluminiumTree;
+import harry.mod.world.gen.generators.WorldGenCopperTree;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.properties.IProperty;
@@ -33,25 +36,29 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IHasModel 
+public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IHasModel
 {	
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
     protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
     
-    public static final PropertyEnum<BlockPlank.EnumType> VARIANT = PropertyEnum.<BlockPlank.EnumType>create("variant", BlockPlank.EnumType.class, new Predicate<BlockPlank.EnumType>()
+    public static final PropertyEnum<EnumHandler.EnumType> VARIANT = PropertyEnum.<EnumHandler.EnumType>create("variant", EnumHandler.EnumType.class, new Predicate<EnumHandler.EnumType>()
 	{
-		public boolean apply(@Nullable BlockPlank.EnumType apply)
+		public boolean apply(@Nullable EnumHandler.EnumType apply)
 		{
 			return apply.getMeta() < 2;
 		}
 	});
     
+    private String name;
+    
     public BlockSaplings(String name) 
     {
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, BlockPlank.EnumType.COPPER).withProperty(STAGE, Integer.valueOf(0)));
+		this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.COPPER).withProperty(STAGE, Integer.valueOf(0)));
+		setCreativeTab(Main.TUTORIAL);
+		
+		this.name = name;
 		
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlockVariants(this).setRegistryName(this.getRegistryName()));
@@ -86,7 +93,7 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
     @Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) 
 	{
-		for(BlockPlank.EnumType customblockplanks$enumtype : BlockPlank.EnumType.values())
+		for(EnumHandler.EnumType customblockplanks$enumtype : EnumHandler.EnumType.values())
 		{
 			items.add(new ItemStack(this, 1, customblockplanks$enumtype.getMeta()));
 		}
@@ -95,20 +102,26 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
     @Override
 	public int damageDropped(IBlockState state) 
 	{
-		return ((BlockPlank.EnumType)state.getValue(VARIANT)).getMeta();
+		return ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
+	}
+	
+	@Override
+	public String getSpecialName(ItemStack stack) 
+	{
+		return EnumHandler.EnumType.values()[stack.getItemDamage()].getName();
 	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) 
 	{
-		return this.getDefaultState().withProperty(VARIANT, BlockPlank.EnumType.byMetadata(meta & 1)).withProperty(STAGE, Integer.valueOf((meta & 8) >> 3));
+		return this.getDefaultState().withProperty(VARIANT, EnumHandler.EnumType.byMetadata(meta & 1)).withProperty(STAGE, Integer.valueOf((meta & 8) >> 3));
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
 		int i = 0;
-		i = i | ((BlockPlank.EnumType)state.getValue(VARIANT)).getMeta();
+		i = i | ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
 		i = i | ((Integer)state.getValue(STAGE)).intValue() << 3;
 		return i;
 	}
@@ -119,8 +132,17 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
 		return new BlockStateContainer(this, new IProperty[] {VARIANT, STAGE});	
 	}
 	
+	@Override
+	public void registerModels() 
+	{
+		for(int i = 0; i < EnumHandler.EnumType.values().length; i++)
+		{
+			Main.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "sapling_" + EnumHandler.EnumType.values()[i].getName(), "inventory");
+		}
+	}
 	
 	//Tree Code
+	
 	
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state) 
@@ -142,12 +164,13 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
 		boolean flag = false;
 		int i = 0, j = 0;
 		
-		switch((BlockPlank.EnumType)state.getValue(VARIANT))
+		switch((EnumHandler.EnumType)state.getValue(VARIANT))
 		{
 		case COPPER:
-			//gen = new WorldGenTutorialTree();
+			gen = new WorldGenCopperTree();
 			break;
 		case ALUMINIUM:
+			gen = new WorldGenAluminiumTree();
 			break;
 		}
 		
@@ -196,20 +219,5 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
 	protected boolean canSustainBush(IBlockState state) 
 	{
 		return state.getBlock() == Blocks.GRASS || state.getBlock() == Blocks.DIRT || state.getBlock() == Blocks.FARMLAND;
-	}
-	
-	@Override
-	public void registerModels() 
-	{
-		for(int i = 0; i < BlockPlank.EnumType.values().length; i++)
-		{
-			Main.proxy.registerVariantRenderer(Item.getItemFromBlock(BlockInit.SAPLING), i, "sapling_" + BlockPlank.EnumType.values()[i].getName(), "inventory");
-		}
-	}
-
-	@Override
-	public String getSpecialName(ItemStack stack) 
-	{
-		return BlockPlank.EnumType.values()[stack.getItemDamage()].getName();
 	}
 }

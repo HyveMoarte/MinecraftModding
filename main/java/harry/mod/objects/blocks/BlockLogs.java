@@ -7,7 +7,8 @@ import com.google.common.base.Predicate;
 import harry.mod.Main;
 import harry.mod.init.BlockInit;
 import harry.mod.init.ItemInit;
-import harry.mod.util.ItemBlockVariants;
+import harry.mod.objects.blocks.item.ItemBlockVariants;
+import harry.mod.util.handlers.EnumHandler;
 import harry.mod.util.interfaces.IHasModel;
 import harry.mod.util.interfaces.IMetaName;
 import net.minecraft.block.BlockLog;
@@ -21,23 +22,27 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
-public class BlockLogs extends BlockLog implements IHasModel,IMetaName
+public class BlockLogs extends BlockLog implements IMetaName, IHasModel
 {
-	public static final PropertyEnum<BlockPlank.EnumType> VARIANT = PropertyEnum.<BlockPlank.EnumType>create("variant", BlockPlank.EnumType.class, new Predicate<BlockPlank.EnumType>()
+	public static final PropertyEnum<EnumHandler.EnumType> VARIANT = PropertyEnum.<EnumHandler.EnumType>create("variant", EnumHandler.EnumType.class, new Predicate<EnumHandler.EnumType>()
 	{
-		public boolean apply(@Nullable BlockPlank.EnumType apply)
+		public boolean apply(@Nullable EnumHandler.EnumType apply)
 		{
 			return apply.getMeta() < 2;
 		}
 	});
+	
+	private String name;
 	
 	public BlockLogs(String name) 
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setSoundType(SoundType.WOOD);
-		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, BlockPlank.EnumType.COPPER).withProperty(LOG_AXIS, EnumAxis.Y));
+		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.COPPER).withProperty(LOG_AXIS, EnumAxis.Y));
+		setCreativeTab(Main.TUTORIAL);
+		
+		this.name = name;
 		
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlockVariants(this).setRegistryName(this.getRegistryName()));
@@ -46,7 +51,7 @@ public class BlockLogs extends BlockLog implements IHasModel,IMetaName
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) 
 	{
-		for(BlockPlank.EnumType customblockplanks$enumtype : BlockPlank.EnumType.values())
+		for(EnumHandler.EnumType customblockplanks$enumtype : EnumHandler.EnumType.values())
 		{
 			items.add(new ItemStack(this, 1, customblockplanks$enumtype.getMeta()));
 		}
@@ -55,7 +60,7 @@ public class BlockLogs extends BlockLog implements IHasModel,IMetaName
 	@Override
 	public IBlockState getStateFromMeta(int meta) 
 	{
-		IBlockState state = this.getDefaultState().withProperty(VARIANT, BlockPlank.EnumType.byMetadata((meta & 1) % 2));
+		IBlockState state = this.getDefaultState().withProperty(VARIANT, EnumHandler.EnumType.byMetadata((meta & 1) % 2));
 		
 		switch(meta & 6)
 		{
@@ -83,7 +88,7 @@ public class BlockLogs extends BlockLog implements IHasModel,IMetaName
 	public int getMetaFromState(IBlockState state) 
 	{
 		int i = 0;
-		i = i | ((BlockPlank.EnumType)state.getValue(VARIANT)).getMeta();
+		i = i | ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
 		
 		switch((BlockLog.EnumAxis)state.getValue(LOG_AXIS))
 		{
@@ -111,27 +116,27 @@ public class BlockLogs extends BlockLog implements IHasModel,IMetaName
 	@Override
 	protected ItemStack getSilkTouchDrop(IBlockState state) 
 	{
-		return new ItemStack(Item.getItemFromBlock(this), 1, ((BlockPlank.EnumType)state.getValue(VARIANT)).getMeta());
+		return new ItemStack(Item.getItemFromBlock(this), 1, ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta());
 	}
 	
 	@Override
 	public int damageDropped(IBlockState state) 
 	{
-		return ((BlockPlank.EnumType)state.getValue(VARIANT)).getMeta();
+		return ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
 	}
 	
 	@Override
 	public String getSpecialName(ItemStack stack) 
 	{
-		return BlockPlank.EnumType.values()[stack.getItemDamage()].getName();
+		return EnumHandler.EnumType.values()[stack.getItemDamage()].getName();
 	}
 	
 	@Override
 	public void registerModels() 
 	{
-		for(int i = 0; i < BlockPlank.EnumType.values().length; i++)
+		for(int i = 0; i < EnumHandler.EnumType.values().length; i++)
 		{
-			Main.proxy.registerVariantRenderer(Item.getItemFromBlock(BlockInit.LOG), i, "log_" + BlockPlank.EnumType.values()[i].getName(), "inventory");
+			Main.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "log_" + EnumHandler.EnumType.values()[i].getName(), "inventory");
 		}
-	}
+	}	
 }

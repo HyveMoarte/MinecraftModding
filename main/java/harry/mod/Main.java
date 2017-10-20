@@ -2,6 +2,8 @@ package harry.mod;
 
 import harry.mod.proxy.CommonProxy;
 import harry.mod.util.Reference;
+import harry.mod.util.handlers.RegistryHandler;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -19,8 +21,10 @@ public class Main
 	@SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
 	public static CommonProxy proxy;
 	
+	public static final CreativeTabs TUTORIAL = new TutorialTab("tutorialtab");
+	
 	@EventHandler
-	public static void preInit(FMLPreInitializationEvent event) {}
+	public static void preInit(FMLPreInitializationEvent event) {RegistryHandler.otherRegistries();}
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {}
 	@EventHandler

@@ -8,7 +8,6 @@ import harry.mod.util.handlers.EnumHandler;
 import harry.mod.util.interfaces.IHasModel;
 import harry.mod.util.interfaces.IMetaName;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -23,26 +22,25 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockPlank extends Block implements IMetaName, IHasModel
+public class BlockOres extends Block implements IHasModel, IMetaName
 {
 	public static final PropertyEnum<EnumHandler.EnumType> VARIANT = PropertyEnum.<EnumHandler.EnumType>create("variant", EnumHandler.EnumType.class);
 	
-	private String name;
+	private String name, dimension;
 	
-	public BlockPlank(String name) 
+	public BlockOres(String name, String dimension) 
 	{
-		super(Material.WOOD);
+		super(Material.ROCK);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setSoundType(SoundType.WOOD);
-		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.COPPER));
 		setCreativeTab(Main.TUTORIAL);
+		setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.COPPER));
 		
 		this.name = name;
+		this.dimension = dimension;
 		
 		BlockInit.BLOCKS.add(this);
 		ItemInit.ITEMS.add(new ItemBlockVariants(this).setRegistryName(this.getRegistryName()));
-	
 	}
 	
 	@Override
@@ -52,12 +50,9 @@ public class BlockPlank extends Block implements IMetaName, IHasModel
 	}
 	
 	@Override
-	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) 
+	public int getMetaFromState(IBlockState state) 
 	{
-		for(EnumHandler.EnumType customblockplanks$enumtype : EnumHandler.EnumType.values())
-		{
-			items.add(new ItemStack(this, 1, customblockplanks$enumtype.getMeta()));
-		}
+		return ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
 	}
 	
 	@Override
@@ -67,23 +62,26 @@ public class BlockPlank extends Block implements IMetaName, IHasModel
 	}
 	
 	@Override
-	public int getMetaFromState(IBlockState state) 
-	{
-		return ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
-	}
-	
-	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) 
 	{
 		return new ItemStack(Item.getItemFromBlock(this), 1, getMetaFromState(world.getBlockState(pos)));
 	}
 	
 	@Override
-	protected BlockStateContainer createBlockState() 
+	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
+	{
+		for(EnumHandler.EnumType variant : EnumHandler.EnumType.values())
+		{
+			items.add(new ItemStack(this, 1, variant.getMeta()));
+		}
+	}
+	
+	@Override
+	protected BlockStateContainer createBlockState()
 	{
 		return new BlockStateContainer(this, new IProperty[] {VARIANT});
 	}
-
+	
 	@Override
 	public String getSpecialName(ItemStack stack) 
 	{
@@ -95,7 +93,7 @@ public class BlockPlank extends Block implements IMetaName, IHasModel
 	{
 		for(int i = 0; i < EnumHandler.EnumType.values().length; i++)
 		{
-			Main.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "planks_" + EnumHandler.EnumType.values()[i].getName(), "inventory");
+			Main.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "ore_" + this.dimension + "_" + EnumHandler.EnumType.values()[i].getName(), "inventory");
 		}
 	}
 }
