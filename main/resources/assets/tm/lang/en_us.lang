@@ -10,13 +10,23 @@ item.helmet_copper.name=Copper Helmet
 item.chestplate_copper.name=Copper Chestplate
 item.leggings_copper.name=Copper Leggings
 item.boots_copper.name=Copper Boots
+
 tile.block_copper.name=Copper Block
 
-tile.planks_copper.name=Copper Infused Planks
-tile.planks_aluminium.name=Aluminium Infused Planks
-tile.planks_copper.name=Copper Infused Planks
-tile.planks_aluminium.name=Aluminium Infused Planks
-tile.planks_copper.name=Copper Infused Planks
-tile.planks_aluminium.name=Aluminium Infused Planks
-tile.planks_copper.name=Copper Infused Planks
-tile.planks_aluminium.name=Aluminium Infused Planks
+tile.ore_overworld_aluminium.name=Aluminium Ore
+tile.ore_overworld_copper.name=Copper Ore
+tile.ore_end_aluminium.name=Ender Aluminium Ore
+tile.ore_end_copper.name=Ender Copper Ore
+tile.ore_nether_aluminium.name=Fiery Aluminium Ore
+tile.ore_nether_copper.name=Fiery Copper Ore
+
+tile.planks_aluminium.name=Aluminium Planks
+tile.log_aluminium.name=Aluminium Log
+tile.leaves_aluminium.name=Aluminium Leaves
+tile.sapling_aluminium.name=Aluminium Sapling
+
+tile.planks_copper.name=Copper Planks
+tile.log_copper.name=Copper Log
+tile.leaves_copper.name=Copper Leaves
+tile.sapling_copper.name=Copper Sapling
+
