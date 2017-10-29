@@ -1,5 +1,8 @@
 itemGroup.tutorialtab=Tutorial Tab
 
+generator.Copper=Copper
+generator.Custom=Tutorial Mod Biomes
+
 item.ingot_copper.name=Copper Ingot
 item.axe_copper.name=Copper Axe
 item.hoe_copper.name=Copper Hoe
@@ -20,11 +23,13 @@ tile.ore_end_copper.name=Ender Copper Ore
 tile.ore_nether_aluminium.name=Fiery Aluminium Ore
 tile.ore_nether_copper.name=Fiery Copper Ore
 
+tile.dirt_aluminium.name=Aluminium Dirt
 tile.planks_aluminium.name=Aluminium Planks
 tile.log_aluminium.name=Aluminium Log
 tile.leaves_aluminium.name=Aluminium Leaves
 tile.sapling_aluminium.name=Aluminium Sapling
 
+tile.dirt_copper.name=Copper Dirt
 tile.planks_copper.name=Copper Planks
 tile.log_copper.name=Copper Log
 tile.leaves_copper.name=Copper Leaves

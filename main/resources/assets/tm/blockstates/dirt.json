@@ -1,0 +1,7 @@
+{
+    "variants": 
+    {
+        "variant=copper": { "model": "tm:dirt_copper" },
+        "variant=aluminium": { "model": "tm:dirt_aluminium" }
+    }
+}
