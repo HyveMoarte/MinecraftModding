@@ -7,7 +7,10 @@ import harry.mod.objects.blocks.BlockLeaf;
 import harry.mod.objects.blocks.BlockLogs;
 import harry.mod.objects.blocks.BlockSaplings;
 import harry.mod.util.handlers.EnumHandler;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -120,4 +123,12 @@ public class WorldGenCopperTree extends WorldGenAbstractTree
 		
 		return true;
 	}	
+	
+	@Override
+	protected boolean canGrowInto(Block blockType)
+	{
+		Material material = blockType.getDefaultState().getMaterial();
+        return material == Material.AIR || material == Material.LEAVES || material == Material.GROUND || blockType == BlockInit.DIRT || blockType == Blocks.GRASS || blockType == Blocks.DIRT || blockType == Blocks.LOG || blockType == Blocks.LOG2 || blockType == Blocks.SAPLING || blockType == Blocks.VINE;
+  
+	}
 }

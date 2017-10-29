@@ -24,9 +24,9 @@ public class Main
 	public static final CreativeTabs TUTORIAL = new TutorialTab("tutorialtab");
 	
 	@EventHandler
-	public static void preInit(FMLPreInitializationEvent event) {RegistryHandler.otherRegistries();}
+	public static void preInit(FMLPreInitializationEvent event) {RegistryHandler.preInitRegistries();}
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {}
 	@EventHandler
-	public static void postInit(FMLPostInitializationEvent event) {}
+	public static void postInit(FMLPostInitializationEvent event) {RegistryHandler.postInitRegistries();}
 }

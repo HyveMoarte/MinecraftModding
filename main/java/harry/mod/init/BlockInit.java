@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import harry.mod.objects.blocks.BlockBase;
+import harry.mod.objects.blocks.BlockDirts;
 import harry.mod.objects.blocks.BlockLeaf;
 import harry.mod.objects.blocks.BlockLogs;
 import harry.mod.objects.blocks.BlockOres;
@@ -26,4 +27,6 @@ public class BlockInit
 	public static final Block LOGS = new BlockLogs("log");
 	public static final Block LEAVES = new BlockLeaf("leaves");
 	public static final Block SAPLINGS = new BlockSaplings("sapling");
+	
+	public static final Block DIRT = new BlockDirts("dirt");
 }

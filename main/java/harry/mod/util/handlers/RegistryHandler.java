@@ -1,12 +1,16 @@
 package harry.mod.util.handlers;
 
+import harry.mod.init.BiomeInit;
 import harry.mod.init.BlockInit;
 import harry.mod.init.ItemInit;
 import harry.mod.util.interfaces.IHasModel;
 import harry.mod.world.gen.WorldGenCustomOres;
 import harry.mod.world.gen.WorldGenCustomTrees;
+import harry.mod.world.types.WorldTypeCopper;
+import harry.mod.world.types.WorldTypeCustom;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.world.WorldType;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -48,9 +52,17 @@ public class RegistryHandler
 		}
 	}
 	
-	public static void otherRegistries()
+	public static void preInitRegistries()
 	{
 		GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomTrees(), 0);
+		
+		BiomeInit.registerBiomes();
+	}
+	
+	public static void postInitRegistries()
+	{
+		WorldType COPPER = new WorldTypeCopper();
+		WorldType CUSTOM = new WorldTypeCustom();
 	}
 }
