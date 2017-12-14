@@ -3,6 +3,9 @@ itemGroup.tutorialtab=Tutorial Tab
 generator.Copper=Copper
 generator.Custom=Tutorial Mod Biomes
 
+entity.centaur.name=Centaur
+entity.arion.name=Arion
+
 item.ingot_copper.name=Copper Ingot
 item.axe_copper.name=Copper Axe
 item.hoe_copper.name=Copper Hoe
